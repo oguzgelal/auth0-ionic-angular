@@ -1,0 +1,31 @@
+<ion-view view-title="Home">
+
+	<ion-content class="center" style="background-color: rgba(236,239,241,.3);">
+		
+		<div class="list card">
+
+			<div ng-if="!profile()" class="item item-avatar">
+				<img src="http://biaslist.com/img/mind/appeal-to-anonymous-authority.png">
+				<h2>Stranger</h2>
+				<p>Please log in</p>
+			</div>
+
+			<div ng-if="profile()" class="item item-avatar">
+				<img src="{{ profile().picture }}">
+				<h2>{{ profile().name }}</h2>
+				<p>{{ profile().created_at | date }}</p>
+			</div>
+
+			<div ng-if="profile() && profile().cover && profile().cover.source" class="item item-image">
+				<img src="{{ profile().cover.source }}">
+			</div>
+
+			<div class="item item-body">
+				<button ng-if="!profile()" class="button button-block button-positive" ng-click="login()">Login</button>
+				<button ng-if="profile()" class="button button-block button-positive" ng-click="logout()">Logout</button>
+			</div>
+
+		</div>
+	</ion-content>
+
+</ion-view>
